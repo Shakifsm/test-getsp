@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 const Products = ({datas}) => {
     return (
         <div className={styles.main}>
-            <h1>This is products</h1>
+            <h1>This is subcategories & products</h1>
             {
                 datas?.subCategories?.length === 0 ?
                 datas.products.map(item => <li key={item._id}>{item.name}</li> ) :
