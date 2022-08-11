@@ -13,7 +13,7 @@ const Products = ({datas}) => {
                   <h3>{item.name}</h3>
                   {
                                         item.images[0] ?
-                                        <Image width='1000' height='1000' src={item.images[0].image} priority alt="category-img" />
+                                        <Image width='200' height='200' src={item.images[0].image} priority alt="category-img" />
                                         :
                                         <Image width={20} height={20} src='https://i.ibb.co/0CVGxQS/image-not-found-300x169.jpg' priority alt="category-img" />
                                     }
