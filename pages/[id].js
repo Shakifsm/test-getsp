@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 const Products = ({datas}) => {
     return (
         <div className={styles.main}>
-            <h1>This is subcategories & products</h1>
+            <h1>This is subcategories & products </h1>
             {
                 datas?.subCategories?.length === 0 ?
                 datas.products.map(item => <li key={item._id}>{item.name}</li> ) :
@@ -26,17 +26,19 @@ export async function getStaticPaths() {
     // Get the paths we want to pre-render based on posts
     const paths = data.categories.map((products) => ({
       params: { id: products._id },
+      
     }))
   
     // We'll pre-render only these paths at build time.
     // { fallback: false } means other routes should 404.
-    return { paths, fallback: false, revalidate: 10,  }
+    return { paths, fallback: false,  }
   }
 
 
   export async function getStaticProps({ params }) {
     // params contains the post `id`.
     // If the route is like /posts/1, then params.id is 1
+    console.log(params);
     const res = await fetch(`https://ecommerce.devoretapi.co.uk/website/findCategoryAndProducts?isActive=true&storeId=1-2021&categoryId=${params.id}`)
     const datas = await res.json()
   
