@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/img';
 import styles from '../styles/Home.module.css'
 
 const Products = ({datas}) => {
@@ -8,8 +9,16 @@ const Products = ({datas}) => {
             <h1>This is subcategories & products </h1>
             {
                 datas?.subCategories?.length === 0 ?
-                datas.products.map(item => <li key={item._id}>{item.name}</li> ) :
-                datas.subCategories.map(item => <li key={item._id}>{item.subCategoryName}</li> )
+                datas.products.map(item => <div key={item._id}>
+                  <h3>{item.name}</h3>
+                  {
+                                        item.images[0] ?
+                                        <Image width='1000' height='1000' src={item.images[0].image} priority alt="category-img" />
+                                        :
+                                        <Image width={20} height={20} src='https://i.ibb.co/0CVGxQS/image-not-found-300x169.jpg' priority alt="category-img" />
+                                    }
+                </div> ) :
+                datas.subCategories.map(item => <h3 key={item._id}>{item.subCategoryName}</h3> )
             }
             <Link href='/' passHref><button>Go Back</button></Link>
         </div>
