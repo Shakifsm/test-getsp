@@ -41,5 +41,5 @@ export async function getStaticPaths() {
     const datas = await res.json()
   
     // Pass post data to the page via props
-    return { props: { datas } }
+    return { props: { datas }, revalidate: 10, }
   }

@@ -31,7 +31,8 @@ export async function getStaticProps(context) {
   const res = await fetch(`https://ecommerce.devoretapi.co.uk/website/findCategoryAndProducts?isActive=true&storeId=1-2021`);
   const data = await res.json();
   return {
-    props: {  data }, // will be passed to the page component as props
+    props: {  data },
+    revalidate: 10, // will be passed to the page component as props
   }
 }
 
